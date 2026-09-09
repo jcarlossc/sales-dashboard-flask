@@ -1,6 +1,6 @@
 from flask import Flask 
 # Registra as rotas da aplicação. 
-from sales_dashboard.app.routes.routes import main 
+from sales_dashboard_flask.app.routes.routes import main 
 
 
 def create_app() -> Flask: 
