@@ -1,0 +1,213 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- CSS próprio -->
+
+
+<div class="container-fluid">
+    <!-- ================================================= -->
+    <!-- SIDEBAR DESKTOP                                   -->
+    <!-- ================================================= -->
+    <aside class="sidebar d-none d-lg-flex">
+        <div>
+            <div class="brand">
+                <i class="bi bi-bar-chart-fill"></i>
+                <span>
+                    Global Sales
+                </span>
+            </div>
+            <hr>
+            <small class="menu-title">
+                ANÁLISES
+            </small>
+            <nav class="nav flex-column gap-1 mt-3">
+                <a
+                    href="{{ url_for('main.dashboard', section='sales') }}"
+                    class="nav-link dashboard-link menu-item"
+                    data-section="sales"
+                >
+                    <i class="bi bi-graph-up-arrow"></i>
+                    <span>Vendas</span>
+                </a>
+
+                <a href="{{ url_for('main.dashboard', section='financial') }}"
+                    class="nav-link dashboard-link menu-item"
+                    data-section="financial"
+                >
+                    <i class="bi bi-cash-stack"></i>
+                    <span>Financeiro</span>
+                </a>
+
+                <a href="{{ url_for('main.dashboard', section='temporal') }}"
+                    class="nav-link dashboard-link menu-item"
+                    data-section="temporal"
+                >
+                    <i class="bi bi-clock-history"></i>
+                    <span>Análise Temporal</span>
+                </a>
+
+                <a href="{{ url_for('main.dashboard', section='regional') }}"
+                    class="nav-link dashboard-link menu-item"
+                    data-section="regional"
+                >
+                    <i class="bi bi-geo-alt"></i>
+                    <span>Análise Regional</span>
+                </a>
+
+                <a href="{{ url_for('main.dashboard', section='customer') }}"
+                    class="nav-link dashboard-link menu-item"
+                    data-section="customer"
+                >
+                    <i class="bi bi-people"></i>
+                    <span>Análise de Clientes</span>
+                </a>
+
+                <a href="{{ url_for('main.dashboard', section='products') }}" 
+                    class="nav-link dashboard-link menu-item"
+                    data-section="products"
+                    >
+                    <i class="bi bi-box-seam"></i>
+                    <span>Análise de Produtos</span>
+                </a>
+            </nav>
+        </div>
+        <div class="sidebar-footer">
+            <span>
+                <i class="bi bi-cpu"></i>
+                Analytics Platform
+            </span>
+        </div>
+    </aside>
+</div>    
+<!-- ================================================= -->
+<!-- ÁREA PRINCIPAL                                   -->
+<!-- ================================================= -->
+<main class="main-content">
+    <!-- TOPBAR -->
+    <header class="topbar">
+        <div class="d-flex align-items-center gap-3">
+            <!-- Botão mobile -->
+            <button
+                class="btn mobile-menu-button d-lg-none"
+                type="button"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#mobileSidebar"
+            >
+                <i class="bi bi-list"></i>
+            </button>
+            <div>
+                <div class="page-title">
+                    Vendas
+                </div>
+                <div class="page-subtitle">
+                    Visão geral do desempenho comercial
+                </div>
+            </div>
+        </div>
+        <!-- Ações -->
+        <div class="topbar-actions">
+            <button
+                class="btn icon-button"
+                title="Atualizar dados"
+            >
+                <i class="bi bi-arrow-clockwise"></i>
+            </button>
+            <button
+                class="btn icon-button"
+                title="Tema"
+            >
+                <i class="bi bi-moon-stars"></i>
+            </button>
+        </div>
+    </header>
+
+    
+
+    <!-- ================================================= -->
+    <!-- SIDEBAR MOBILE                                    -->
+    <!-- ================================================= -->
+    <div
+        class="offcanvas offcanvas-start mobile-sidebar"
+        tabindex="-1"
+        id="mobileSidebar"
+    >
+        <div class="offcanvas-header">
+            <div class="brand">
+                <i class="bi bi-bar-chart-fill"></i>
+                <span>
+                    Global Sales
+                </span>
+            </div>
+            <button
+                type="button"
+                class="btn-close btn-close-white"
+                data-bs-dismiss="offcanvas"
+            ></button>
+        </div>
+        <div class="offcanvas-body">
+            <small class="menu-title">
+                ANÁLISES
+            </small>
+            <nav class="nav flex-column gap-1 mt-3">
+                <a
+                    href="{{ url_for('main.dashboard', section='sales') }}"
+                    class="nav-link dashboard-link menu-item"
+                    data-section="sales"
+                >
+                    <i class="bi bi-graph-up-arrow"></i>
+                    Vendas
+                </a>
+
+                <a href="{{ url_for('main.dashboard', section='financial') }}"
+                    class="nav-link dashboard-link menu-item"
+                    data-section="financial"
+                >
+                    <i class="bi bi-cash-stack"></i>
+                    Financeiro
+                </a>
+
+                <a href="{{ url_for('main.dashboard', section='temporal') }}"
+                    class="nav-link dashboard-link menu-item"
+                    data-section="temporal"
+                >
+                    <i class="bi bi-clock-history"></i>
+                    Análise Temporal
+                </a>
+
+                <a href="{{ url_for('main.dashboard', section='regional') }}"
+                    class="nav-link dashboard-link menu-item"
+                    data-section="regional"
+                >
+                    <i class="bi bi-geo-alt"></i>
+                    Análise Regional
+                </a>
+
+                <a href="{{ url_for('main.dashboard', section='customer') }}"
+                    class="nav-link dashboard-link menu-item"
+                    data-section="customer"
+                >
+                    <i class="bi bi-people"></i>
+                    Análise de Clientes
+                </a>
+
+                <a 
+                    href="{{ url_for('main.dashboard', section='products') }}"
+                    class="nav-link dashboard-link menu-item"
+                    data-section="sales"
+                    >
+                    <i class="bi bi-box-seam"></i>
+                    Análise de Produtos
+                </a>
+            </nav>
+        </div>
+    </div>
+</main>        
+
+<script
+    id="dashboard-data"
+    type="application/json"
+>
+{{ dashboard_data | tojson }}
+</script>
+
+{% endblock %}
