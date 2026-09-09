@@ -6,11 +6,11 @@ main = Blueprint("main", __name__)
 def dashboard():
 
     try:
-        teste = "TESTANDO TEMPLATE"
+        dashboard_data = {}
 
         return render_template(
             "index.html",
-            teste=teste,
+            dashboard_data=dashboard_data,
         )
 
     except Exception as exc: 
