@@ -18,7 +18,7 @@ def get_sales(df: pd.DataFrame) -> dict:
     # KPIs
     gross_revenue = df["gross_revenue"].sum()
     sales_quantity = len(df)
-    total_products = df["Product_Name"].nunique()
+    profit_margin = (df["Profit"].sum() / df["gross_revenue"].sum()) * 100
     average_ticket = gross_revenue / sales_quantity
 
     # Vendas por mês
@@ -35,7 +35,7 @@ def get_sales(df: pd.DataFrame) -> dict:
         "cards": {
             "gross_revenue": gross_revenue,
             "sales_quantity": sales_quantity,
-            "total_products": total_products,
+            "profit_margin": profit_margin,
             "average_ticket": average_ticket,
         },
         "charts": {

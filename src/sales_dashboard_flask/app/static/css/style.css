@@ -161,3 +161,166 @@ body {
     color: white;
     border-color: rgba(56, 189, 248, 0.4);
 }
+
+/* =========================
+   CONTENT
+   ========================= */
+.content {
+    padding: 35px;
+}
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.section-header h1 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.section-header p {
+    color: var(--text-secondary);
+    margin: 0;
+}
+.status-badge {
+    color: #86efac;
+    font-size: 0.75rem;
+    display: flex;
+    gap: 7px;
+    align-items: center;
+}
+.status-badge i {
+    font-size: 6px;
+}
+/* =========================
+   METRICS
+   ========================= */
+.metric-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    transition:
+        transform 0.2s,
+        border-color 0.2s;
+}
+.metric-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(56, 189, 248, 0.25);
+}
+.metric-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: rgba(56, 189, 248, 0.1);
+    color: var(--accent);
+    font-size: 1.3rem;
+}
+.metric-label {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+}
+.metric-value {
+    font-size: 1.45rem;
+    font-weight: 700;
+}
+/* =========================
+   CHART
+   ========================= */
+.chart-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 25px;
+}
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.chart-header h5 {
+    margin: 0;
+    font-size: 1rem;
+}
+.chart-header span {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+}
+.chart-header i {
+    color: var(--text-secondary);
+}
+.chart-container {
+    position: relative;
+    height: 350px;
+}
+/* =========================
+   MOBILE
+   ========================= */
+.mobile-menu-button {
+    color: white;
+    font-size: 1.4rem;
+    padding: 0;
+}
+.mobile-sidebar {
+    background: var(--bg-sidebar);
+    color: white;
+}
+
+
+
+
+
+@media (max-width: 991px) {
+    .main-content {
+        margin-left: 0;
+        width:100%;
+    }
+}
+/* Responsividade */
+@media (max-width: 768px) {
+    .dashboard-card {
+        padding: 18px;
+    }
+    .chart-small {
+        height: 280px;
+    }
+    .chart-header h5 {
+        font-size: 0.95rem;
+    }
+    .chart-header span {
+        font-size: 0.8rem;
+    }
+}
+@media (max-width: 576px) {
+    .topbar {
+        padding: 0 18px;
+        height: 70px;
+    }
+    .content {
+        padding: 22px 16px;
+    }
+    .section-header {
+        align-items: flex-start;
+    }
+    .section-header h1 {
+        font-size: 1.35rem;
+    }
+    .status-badge {
+        display: none;
+    }
+    .metric-value {
+        font-size: 1.25rem;
+    }
+    .chart-container {
+        height: 280px;
+    }
+}

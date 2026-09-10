@@ -120,7 +120,93 @@
             </button>
         </div>
     </header>
-
+    <!-- CONTEÚDO -->
+    <section class="content">
+        <!-- CABEÇALHO -->
+        <div class="section-header">
+            <div>
+                <h1>
+                    Dashboard de Vendas
+                </h1>
+                <p>
+                    Indicadores principais e evolução das vendas.
+                </p>
+            </div>
+            <span class="status-badge">
+                <i class="bi bi-circle-fill"></i>
+                Dados atualizados
+            </span>
+        </div>
+        <!-- ================================================= -->
+        <!-- KPI CARDS                                         -->
+        <!-- ================================================= -->
+        <div class="row g-4 mb-4">
+            <!-- Receita -->
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div>
+                        <div class="metric-label">
+                            Receita Total
+                        </div>
+                        <div class="metric-value">
+                        ${{ "{:,.2f}".format(dashboard_data["grossRevenue"]) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pedidos -->
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="bi bi-cart-check"></i>
+                    </div>
+                    <div>
+                        <div class="metric-label">
+                            Total de Pedidos
+                        </div>
+                        <div class="metric-value">
+                            {{ "{:,.0f}".format(dashboard_data["salesQuantity"]).replace(",", ".") }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Ticket -->
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div>
+                        <div class="metric-label">
+                            Ticket Médio
+                        </div>
+                        <div class="metric-value">
+                            ${{ "{:,.2f}".format(dashboard_data["averageTicket"]) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Margem de lucro -->
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="bi bi-percent"></i>
+                    </div>
+                    <div>
+                        <div class="metric-label">
+                            Margin de Lucro
+                        </div>
+                        <div class="metric-value">
+                            {{ "%.2f"|format(dashboard_data["profitMargin"]) }}%
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>    
     
 
     <!-- ================================================= -->
