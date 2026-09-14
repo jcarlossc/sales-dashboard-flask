@@ -104,21 +104,6 @@
                 </div>
             </div>
         </div>
-        <!-- Ações -->
-        <div class="topbar-actions">
-            <button
-                class="btn icon-button"
-                title="Atualizar dados"
-            >
-                <i class="bi bi-arrow-clockwise"></i>
-            </button>
-            <button
-                class="btn icon-button"
-                title="Tema"
-            >
-                <i class="bi bi-moon-stars"></i>
-            </button>
-        </div>
     </header>
     <!-- CONTEÚDO VENDAS -->
     <section class="content">
@@ -207,7 +192,7 @@
             </div>
         </div>
         <!-- ================================================= -->
-        <!-- GRÁFICOS VENDAS                                           -->
+        <!-- GRÁFICOS DE VENDAS                                           -->
         <!-- ================================================= -->
         <div class="col-12">   
             <div class="dashboard-card chart-card">
@@ -222,7 +207,67 @@
                     <canvas id="salesMonth"></canvas>
                 </div>
             </div>
+        </div>   
+        <div class="row">  
+            <div class="col-md-6 mt-4">
+                <div class="dashboard-card chart-card">
+                    <div class="chart-header">
+                        <div>
+                            <h5>Vendas por Produtos</h5>
+                            <span>Ranking de faturamento</span>
+                        </div>
+                        <i class="bi bi-bar-chart-line"></i>
+                    </div>
+                    <div class="chart-container chart-small">
+                        <canvas id="salesProducts"></canvas>
+                    </div>
+                </div>
+            </div> 
+            <div class="col-md-6 mt-4">
+                <div class="dashboard-card chart-card">
+                    <div class="chart-header">
+                        <div>
+                            <h5>Vendas por Região</h5>
+                            <span>Ranking de faturamento</span>
+                        </div>
+                        <i class="bi bi-bar-chart-line"></i>
+                    </div>
+                    <div class="chart-container chart-small">
+                        <canvas id="salesRegions"></canvas>
+                    </div>
+                </div>
+            </div> 
         </div>    
+        <div class="row">  
+            <div class="col-md-6 mt-4">
+                <div class="dashboard-card chart-card">
+                    <div class="chart-header">
+                        <div>
+                            <h5>Vendas por Método de Pagamento</h5>
+                            <span>Ranking de faturamento</span>
+                        </div>
+                        <i class="bi bi-pie-chart"></i>
+                    </div>
+                    <div class="chart-container chart-small">
+                        <canvas id="salesPaymentMethods"></canvas>
+                    </div>
+                </div>
+            </div> 
+            <div class="col-md-6 mt-4">
+                <div class="dashboard-card chart-card">
+                    <div class="chart-header">
+                        <div>
+                            <h5>Vendas por Categoria</h5>
+                            <span>Ranking de faturamento</span>
+                        </div>
+                        <i class="bi bi-bar-chart-line"></i>
+                    </div>
+                    <div class="chart-container chart-small">
+                        <canvas id="salesCategories"></canvas>
+                    </div>
+                </div>
+            </div> 
+        </div> 
     </section>    
     
 

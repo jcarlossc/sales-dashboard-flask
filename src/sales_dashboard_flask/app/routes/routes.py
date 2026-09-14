@@ -25,6 +25,10 @@ def dashboard():
                 "profitMargin": sales["cards"]["profit_margin"],
                 "averageTicket": sales["cards"]["average_ticket"],
                 "salesMonth": sales["charts"]["sales_month"],
+                "salesProducts": sales["charts"]["sales_products"],
+                "salesRegions": sales["charts"]["sales_regions"],
+                "salesPaymentMethods": sales["charts"]["sales_payment_methods"],
+                "salesCategories": sales["charts"]["sales_categories"],
             }
 
         elif section == "financial":
@@ -54,6 +58,10 @@ def dashboard():
                 "profitMargin": sales["cards"]["profit_margin"],
                 "averageTicket": sales["cards"]["average_ticket"],
                 "salesMonth": sales["charts"]["sales_month"],
+                "salesProducts": sales["charts"]["sales_products"],
+                "salesRegions": sales["charts"]["sales_regions"],
+                "salesPaymentMethods": sales["charts"]["sales_payment_methods"],
+                "salesCategories": sales["charts"]["sales_categories"],
             }
 
         return render_template(
