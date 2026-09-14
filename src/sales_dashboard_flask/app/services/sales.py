@@ -31,6 +31,40 @@ def get_sales(df: pd.DataFrame) -> dict:
         .to_dict(orient="records")
     )
 
+    # Gráfico: vendas por produto
+    sales_products = (
+        df.groupby("Product_Name")["gross_revenue"]
+        .sum()
+        .sort_values(ascending=False)
+        .head(15)
+        .reset_index()
+        .to_dict(orient="records")
+    )
+
+    # Gráfico: vendas por região
+    sales_regions = (
+        df.groupby("Region", as_index=False)["gross_revenue"]
+        .sum()
+        .sort_values("gross_revenue", ascending=False)
+        .to_dict(orient="records")
+    )
+
+    # Gráfico: vendas por método de pagamento
+    sales_payment_methods = (
+        df.groupby("Payment_Method", as_index=False)["gross_revenue"]
+        .sum()
+        .sort_values("gross_revenue", ascending=False)
+        .to_dict(orient="records")
+    )
+
+    # Gráfico: vendas por categoria
+    sales_categories = (
+        df.groupby("Product_Category", as_index=False)["gross_revenue"]
+        .sum()
+        .sort_values("gross_revenue", ascending=False)
+        .to_dict(orient="records")
+    )
+
     return {
         "cards": {
             "gross_revenue": gross_revenue,
@@ -40,5 +74,9 @@ def get_sales(df: pd.DataFrame) -> dict:
         },
         "charts": {
             "sales_month": sales_month,
+            "sales_products": sales_products,
+            "sales_regions": sales_regions,
+            "sales_payment_methods": sales_payment_methods,
+            "sales_categories": sales_categories,
         },
     } 
