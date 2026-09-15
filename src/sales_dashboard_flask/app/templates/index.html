@@ -106,7 +106,7 @@
         </div>
     </header>
     <!-- CONTEÚDO VENDAS -->
-    <section class="content">
+    <section id="sales" class="content dashboard-section">
         <!-- CABEÇALHO -->
         <div class="section-header">
             <div>
@@ -123,7 +123,7 @@
             </span>
         </div>
         <!-- ================================================= -->
-        <!-- KPI CARDS                                         -->
+        <!-- KPI CARDS VENDAS                                        -->
         <!-- ================================================= -->
         <div class="row g-4 mb-4">
             <!-- Receita -->
@@ -270,7 +270,92 @@
         </div> 
     </section>    
     
-
+    <!-- CONTEÚDO FINANCEIRO-->
+    <section id="financial" class="content dashboard-section">
+        <!-- CABEÇALHO -->
+        <div class="section-header">
+            <div>
+                <h1>
+                    Dashboard Financeiro
+                </h1>
+                <p>
+                    Indicadores financeiros e evolução dos resultados.
+                </p>
+            </div>
+            <span class="status-badge">
+                <i class="bi bi-circle-fill"></i>
+                Dados atualizados
+            </span>
+        </div>
+        <!-- ================================================= -->
+        <!-- KPI CARDS VENDAS                                        -->
+        <!-- ================================================= -->
+        <div class="row g-4 mb-4">
+            <!-- Receita -->
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div>
+                        <div class="metric-label">
+                            Custo do Frete
+                        </div>
+                        <div class="metric-value">
+                            ${{ "{:,.2f}".format(dashboard_data["totalShippingCost"]) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div>
+                        <div class="metric-label">
+                            Lucro Total
+                        </div>
+                        <div class="metric-value">
+                            ${{ "{:,.2f}".format(dashboard_data["totalProfit"]) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div>
+                        <div class="metric-label">
+                            Total de Descontos
+                        </div>
+                        <div class="metric-value">
+                            ${{ "{:,.2f}".format(dashboard_data["totalDiscount"]) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div>
+                        <div class="metric-label">
+                            Logística por Unidade
+                        </div>
+                        <div class="metric-value">
+                            ${{ "{:,.2f}".format(dashboard_data["costPerUnit"]) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </section>  
     <!-- ================================================= -->
     <!-- SIDEBAR MOBILE                                    -->
     <!-- ================================================= -->

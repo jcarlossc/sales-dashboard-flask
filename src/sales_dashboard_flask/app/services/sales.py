@@ -3,7 +3,7 @@ import pandas as pd
 
 def get_sales(df: pd.DataFrame) -> dict:
     """
-    Calcula as principais métricas do dashboard.
+    Calcula as principais métricas de vendas.
 
     Args:
         df: DataFrame contendo as vendas.
@@ -12,7 +12,7 @@ def get_sales(df: pd.DataFrame) -> dict:
         Dicionário com as métricas.
     """
 
-    # Faturamento por venda
+    # Faturamento total
     df["gross_revenue"] = df["Quantity"] * df["Unit_Price"]
 
     # KPIs

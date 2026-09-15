@@ -1,3 +1,53 @@
+document.addEventListener("DOMContentLoaded", () => {
+
+    // =====================================================
+    // SEÇÃO ATIVA
+    // =====================================================
+
+    const params = new URLSearchParams(window.location.search);
+
+    // Se não houver section na URL, usa sales
+    const sectionName = params.get("section") || "sales";
+
+
+    // =====================================================
+    // MOSTRA A SEÇÃO DO DASHBOARD
+    // =====================================================
+
+    const sections = document.querySelectorAll(".dashboard-section");
+
+    sections.forEach(section => {
+        section.style.display = "none";
+    });
+
+    const activeSection = document.getElementById(sectionName);
+
+    if (activeSection) {
+        activeSection.style.display = "block";
+    }
+
+
+    // =====================================================
+    // ATIVA O BOTÃO DO MENU
+    // =====================================================
+
+    const menuItems = document.querySelectorAll(".menu-item");
+
+    // Remove active de todos
+    menuItems.forEach(item => {
+        item.classList.remove("active");
+    });
+
+    // Adiciona active somente ao botão selecionado
+    const activeMenuItem = document.querySelector(
+        `.menu-item[data-section="${sectionName}"]`
+    );
+
+    if (activeMenuItem) {
+        activeMenuItem.classList.add("active");
+    }
+
+});
 // ============================================================
 // Dados do dashboard
 // ============================================================
