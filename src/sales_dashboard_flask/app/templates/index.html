@@ -182,7 +182,7 @@
                     </div>
                     <div>
                         <div class="metric-label">
-                            Margin de Lucro
+                            Margem de Lucro
                         </div>
                         <div class="metric-value">
                             {{ "%.2f"|format(dashboard_data["profitMargin"]) }}%
@@ -288,7 +288,7 @@
             </span>
         </div>
         <!-- ================================================= -->
-        <!-- KPI CARDS VENDAS                                        -->
+        <!-- KPI CARDS FINANCEIROS                                      -->
         <!-- ================================================= -->
         <div class="row g-4 mb-4">
             <!-- Receita -->
@@ -344,7 +344,7 @@
                     </div>
                     <div>
                         <div class="metric-label">
-                            Logística por Unidade
+                            Custo por Unidade
                         </div>
                         <div class="metric-value">
                             ${{ "{:,.2f}".format(dashboard_data["costPerUnit"]) }}
@@ -352,9 +352,68 @@
                     </div>
                 </div>
             </div>
-            
         </div>
-        
+        <!-- ================================================= -->
+        <!-- GRÁFICOS FINANCEIRO                                        -->
+        <!-- ================================================= -->
+        <div class="col-12">   
+            <div class="dashboard-card chart-card">
+                <div class="chart-header">
+                    <div>
+                        <h5>Evolução Financeira</h5>
+                        <span>Pedidos por Mês</span>
+                    </div>
+                    <i class="bi bi-graph-up-arrow"></i>
+                </div>
+                <div class="chart-container">
+                    <canvas id="ordersByMonth"></canvas>
+                </div>
+            </div>
+        </div> 
+        <div class="row">  
+            <div class="col-md-6 mt-4">
+                <div class="dashboard-card chart-card">
+                    <div class="chart-header">
+                        <div>
+                            <h5>Descontos por Lucro</h5>
+                            <span>Ranking de faturamento</span>
+                        </div>
+                        <i class="bi bi-bar-chart-line"></i>
+                    </div>
+                    <div class="chart-container chart-small">
+                        <canvas id="discountProfit"></canvas>
+                    </div>
+                </div>
+            </div> 
+            <div class="col-md-6 mt-4">
+                <div class="dashboard-card chart-card">
+                    <div class="chart-header">
+                        <div>
+                            <h5>Custo de frete × Receita</h5>
+                            <span>Relação entre o custo de frete e a receita por pedido.</span>
+                        </div>
+                        <i class="bi bi-bar-chart-line"></i>
+                    </div>
+                    <div class="chart-container chart-small">
+                        <canvas id="shippingRevenue"></canvas>
+                    </div>
+                </div>
+            </div> 
+        </div> 
+        <div class="col-12 mt-4">   
+            <div class="dashboard-card chart-card">
+                <div class="chart-header">
+                    <div>
+                        <h5>Receita, custo e lucro ao longo do tempo</h5>
+                        <span>Evolução mensal da receita, dos custos de frete e do lucro.</span>
+                    </div>
+                    <i class="bi bi-graph-up-arrow"></i>
+                </div>
+                <div class="chart-container">
+                    <canvas id="financialByMonth"></canvas>
+                </div>
+            </div>
+        </div>
     </section>  
     <!-- ================================================= -->
     <!-- SIDEBAR MOBILE                                    -->

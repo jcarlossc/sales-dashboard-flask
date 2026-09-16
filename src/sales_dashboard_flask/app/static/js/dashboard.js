@@ -445,3 +445,328 @@ if (
         }
     });
 }
+
+// ============================================================
+// FINANCEIRO
+// ============================================================
+// Pedido por mês
+// ============================================================
+const ordersByMonthCanvas = document.getElementById("ordersByMonth");
+
+if (ordersByMonthCanvas) {
+    const ordersByMonth = dashboardData.ordersByMonth;
+
+    new Chart(ordersByMonthCanvas, {
+        type: "line",
+
+        data: {
+            labels: ordersByMonth.map(item => item.month),
+
+            datasets: [{
+                label: "Pedidos",
+                data: ordersByMonth.map(item => item.orders),
+
+                borderWidth: 2,
+                tension: 0.3,
+                fill: false,
+
+                pointRadius: 4,
+                pointHoverRadius: 6
+            }]
+        },
+
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+
+            plugins: {
+                legend: {
+                    display: true
+                },
+
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return `Pedidos: ${context.parsed.y}`;
+                        }
+                    }
+                }
+            },
+
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: "Mês"
+                    }
+                },
+
+                y: {
+                    beginAtZero: true,
+
+                    title: {
+                        display: true,
+                        text: "Quantidade de pedidos"
+                    },
+
+                    ticks: {
+                        precision: 0
+                    }
+                }
+            }
+        }
+    });
+}
+
+// ============================================================
+// Desconto por lucro
+// ============================================================
+const discountProfitCanvas = document.getElementById("discountProfit");
+
+if (discountProfitCanvas) {
+    const discountProfit = dashboardData.discountProfit;
+    new Chart(discountProfitCanvas, {
+        type: "scatter",
+        data: {
+            datasets: [{
+                label: "Desconto × Lucro",
+
+                data: discountProfit.map(item => ({
+                    x: item.Discount_Percent,
+                    y: item.profit
+                })),
+
+                pointRadius: 5,
+                pointHoverRadius: 7,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true
+                },
+
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return [
+                                `Desconto: $${context.parsed.x.toFixed(2)}`,
+                                `Lucro: $${context.parsed.y.toFixed(2)}`
+                            ];
+                        }
+                    }
+                }
+            },
+
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: "Desconto"
+                    },
+
+                    ticks: {
+                        callback: function(value) {
+                            return "$" + value;
+                        }
+                    }
+                },
+
+                y: {
+                    title: {
+                        display: true,
+                        text: "Lucro"
+                    },
+
+                    ticks: {
+                        callback: function(value) {
+                            return "$" + value;
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+// ============================================================
+// Frete × Receita
+// ============================================================
+const shippingRevenueCanvas =
+    document.getElementById("shippingRevenue");
+
+if (shippingRevenueCanvas) {
+    const shippingRevenue = dashboardData.shippingRevenue;
+
+    new Chart(shippingRevenueCanvas, {
+        type: "scatter",
+
+        data: {
+            datasets: [{
+                label: "Custo de frete × Receita",
+
+                data: shippingRevenue.map(item => ({
+                    x: item.shipping_cost,
+                    y: item.revenue
+                })),
+
+                pointRadius: 5,
+                pointHoverRadius: 7
+            }]
+        },
+
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+
+            plugins: {
+                legend: {
+                    display: true
+                },
+
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return [
+                                `Frete: $${context.parsed.x.toFixed(2)}`,
+                                `Receita: $${context.parsed.y.toFixed(2)}`
+                            ];
+                        }
+                    }
+                }
+            },
+
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: "Custo de frete"
+                    },
+
+                    ticks: {
+                        callback: function(value) {
+                            return "$" + value;
+                        }
+                    }
+                },
+
+                y: {
+                    title: {
+                        display: true,
+                        text: "Receita"
+                    },
+
+                    ticks: {
+                        callback: function(value) {
+                            return "$" + value;
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+// ============================================================
+// Custo e lucro ao longo do tempo
+// ============================================================
+const financialByMonthCanvas =
+    document.getElementById("financialByMonth");
+
+if (financialByMonthCanvas) {
+    const financialByMonth = dashboardData.financialByMonth;
+
+    new Chart(financialByMonthCanvas, {
+        type: "line",
+
+        data: {
+            labels: financialByMonth.map(item => item.month),
+
+            datasets: [
+                {
+                    label: "Receita",
+                    data: financialByMonth.map(item => item.revenue),
+
+                    borderWidth: 2,
+                    tension: 0.3,
+                    pointRadius: 3,
+                    pointHoverRadius: 6
+                },
+
+                {
+                    label: "Custo",
+                    data: financialByMonth.map(item => item.cost),
+
+                    borderWidth: 2,
+                    tension: 0.3,
+                    pointRadius: 3,
+                    pointHoverRadius: 6
+                },
+
+                {
+                    label: "Lucro",
+                    data: financialByMonth.map(item => item.profit),
+
+                    borderWidth: 2,
+                    tension: 0.3,
+                    pointRadius: 3,
+                    pointHoverRadius: 6
+                }
+            ]
+        },
+
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+
+            plugins: {
+                legend: {
+                    display: true
+                },
+
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            return (
+                                `${context.dataset.label}: $` +
+                                context.parsed.y.toLocaleString(
+                                    "en-US",
+                                    {
+                                        minimumFractionDigits: 2,
+                                        maximumFractionDigits: 2
+                                    }
+                                )
+                            );
+                        }
+                    }
+                }
+            },
+
+            scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: "Mês"
+                    }
+                },
+
+                y: {
+                    beginAtZero: true,
+
+                    title: {
+                        display: true,
+                        text: "Valor ($)"
+                    },
+
+                    ticks: {
+                        callback: function(value) {
+                            return "$" + value.toLocaleString("en-US");
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
