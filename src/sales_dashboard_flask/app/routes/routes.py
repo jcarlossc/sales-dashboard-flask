@@ -37,6 +37,10 @@ def dashboard():
             "totalProfit": financial["cards"]["total_profit"],
             "totalDiscount": financial["cards"]["total_discount"],
             "costPerUnit": financial["cards"]["cost_per_unit"],
+            "ordersByMonth": financial["charts"]["orders_by_month"],
+            "discountProfit": financial["charts"]["discount_profit"],
+            "shippingRevenue": financial["charts"]["shipping_revenue"],
+            "financialByMonth": financial["charts"]["financial_by_month"],
         }
 
         return render_template(
