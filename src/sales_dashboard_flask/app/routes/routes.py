@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, request
 from sales_dashboard_flask.app.services.load_sales import load_sales_data
 from sales_dashboard_flask.app.services.sales import get_sales
 from sales_dashboard_flask.app.services.financial import get_financial
+from sales_dashboard_flask.app.services.temporal import get_temporal
 
 main = Blueprint("main", __name__)
 
@@ -15,6 +16,7 @@ def dashboard():
 
         sales = get_sales(df)
         financial = get_financial(df)
+        temporal = get_temporal(df)
 
         dashboard_data = {
             # =========================
@@ -41,6 +43,14 @@ def dashboard():
             "discountProfit": financial["charts"]["discount_profit"],
             "shippingRevenue": financial["charts"]["shipping_revenue"],
             "financialByMonth": financial["charts"]["financial_by_month"],
+
+            # =========================
+            # TEMPORAL
+            # =========================
+            "averageMonthlySales": temporal["cards"]["average_monthly_sales"],
+            "bestMonth": temporal["cards"]["best_month"],
+            "worstMonth": temporal["cards"]["worst_month"],
+            "salesRange": temporal["cards"]["sales_range"],
         }
 
         return render_template(

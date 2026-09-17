@@ -415,6 +415,91 @@
             </div>
         </div>
     </section>  
+    <!-- CONTEÚDO TEMPORAL-->
+    <section id="temporal" class="content dashboard-section">
+        <!-- CABEÇALHO -->
+        <div class="section-header">
+            <div>
+                <h1>
+                    Dashboard Temporal
+                </h1>
+                <p>
+                    Indicadores temporais e evolução dos resultados.
+                </p>
+            </div>
+            <span class="status-badge">
+                <i class="bi bi-circle-fill"></i>
+                Dados atualizados
+            </span>
+        </div>
+        <!-- ================================================= -->
+        <!-- KPI CARDS FINANCEIROS                                      -->
+        <!-- ================================================= -->
+        <div class="row g-4 mb-4">
+            <!-- Receita -->
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div>
+                        <div class="metric-label">
+                            Média Mensal
+                        </div>
+                        <div class="metric-value">
+                            $ {{ "{:,.2f}".format(dashboard_data["averageMonthlySales"]) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div>
+                        <div class="metric-label">
+                            Melhor Mês
+                        </div>
+                        <div class="metric-value">
+                            {{ dashboard_data["bestMonth"] }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Receita -->
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div>
+                        <div class="metric-label">
+                            Pior Mês
+                        </div>
+                        <div class="metric-value">
+                            {{ dashboard_data["worstMonth"] }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="bi bi-currency-dollar"></i>
+                    </div>
+                    <div>
+                        <div class="metric-label">
+                            Amplitude M | P
+                        </div>
+                        <div class="metric-value">
+                            $ {{ "{:,.2f}".format(dashboard_data["salesRange"]) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </section>    
     <!-- ================================================= -->
     <!-- SIDEBAR MOBILE                                    -->
     <!-- ================================================= -->
