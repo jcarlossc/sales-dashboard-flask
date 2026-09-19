@@ -51,6 +51,9 @@ def dashboard():
             "bestMonth": temporal["cards"]["best_month"],
             "worstMonth": temporal["cards"]["worst_month"],
             "salesRange": temporal["cards"]["sales_range"],
+            "salesYear": temporal["charts"]["sales_year"],
+            "profitMonth": temporal["charts"]["profit_month"],
+            "ticketMonth": temporal["charts"]["ticket_month"],
         }
 
         return render_template(
