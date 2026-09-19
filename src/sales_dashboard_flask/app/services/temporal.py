@@ -50,20 +50,94 @@ def get_temporal(df: pd.DataFrame) -> dict:
         # Amplitude entre o melhor e o pior mês.
         sales_range = monthly["sales"].max() - monthly["sales"].min()
 
-        # Volatilidade mensal.
-        sales_std = monthly["sales"].std()
-
-        # Coeficiente de variação.
-        sales_cv = (
-            sales_std / average_monthly_sales * 100
-            if average_monthly_sales != 0
-            else 0
-        )
-
         # Índice de sazonalidade.
         monthly["seasonality_index"] = (
             monthly["sales"] / average_monthly_sales
         )
+
+        # Gráfico de faturamento anual
+        monthly_sales = (
+            data
+            .groupby(data["Order_Date"].dt.year)["Total_Sales"]
+            .sum()
+            .sort_index()
+        )
+
+        sales_year = [
+            {
+                "year": int(year),
+                "sales": float(sales),
+            }
+            for year, sales in monthly_sales.items()
+        ]
+
+        # Gráfico de lucro por mês
+        monthly_profit = (
+            data
+            .groupby(data["Order_Date"].dt.to_period("M"))["Profit"]
+            .sum()
+            .sort_index()
+        )
+
+        month_names = {
+            1: "Jan",
+            2: "Fev",
+            3: "Mar",
+            4: "Abr",
+            5: "Mai",
+            6: "Jun",
+            7: "Jul",
+            8: "Ago",
+            9: "Set",
+            10: "Out",
+            11: "Nov",
+            12: "Dez",
+        }
+
+        profit_month = [
+            {
+                "month": f"{month_names[period.month]}/{period.year}",
+                "profit": float(value),
+            }
+            for period, value in monthly_profit.items()
+        ]
+
+        # Ticket médio por mês
+        monthly_ticket = (
+            data
+            .groupby(data["Order_Date"].dt.to_period("M"))
+            .agg(
+                revenue=("Total_Sales", "sum"),
+                orders=("Order_ID", "nunique"),
+            )
+        )
+
+        monthly_ticket["average_ticket"] = (
+            monthly_ticket["revenue"] / monthly_ticket["orders"]
+        )
+
+        month_names = {
+            1: "Jan",
+            2: "Fev",
+            3: "Mar",
+            4: "Abr",
+            5: "Mai",
+            6: "Jun",
+            7: "Jul",
+            8: "Ago",
+            9: "Set",
+            10: "Out",
+            11: "Nov",
+            12: "Dez",
+        }
+
+        ticket_month = [
+            {
+                "month": f"{month_names[period.month]}/{period.year}",
+                "average_ticket": float(row["average_ticket"]),
+            }
+            for period, row in monthly_ticket.iterrows()
+        ]
 
         return {
             "cards": {
@@ -72,6 +146,11 @@ def get_temporal(df: pd.DataFrame) -> dict:
                 "worst_month": str(worst_month),
                 "sales_range": float(sales_range),
             },
+            "charts": {
+                "sales_year": sales_year,
+                "profit_month": profit_month,
+                "ticket_month": ticket_month,
+            }
         }
 
     except (KeyError, TypeError, ValueError) as error:

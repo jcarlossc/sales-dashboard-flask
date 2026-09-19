@@ -770,3 +770,204 @@ if (financialByMonthCanvas) {
         }
     });
 }
+
+// ============================================================
+// TEMPORAL
+// ============================================================
+// Faturamento Anual
+// ============================================================
+const salesYear = dashboardData.salesYear;
+
+new Chart(document.getElementById("salesYear"), {
+    type: "line",
+
+    data: {
+        labels: salesYear.map(item => item.year),
+
+        datasets: [
+            {
+                label: "Faturamento",
+                data: salesYear.map(item => item.sales),
+                tension: 0.3,
+                fill: true,
+            },
+        ],
+    },
+
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: "Ano",
+                },
+            },
+
+            y: {
+                title: {
+                    display: true,
+                    text: "Faturamento",
+                },
+
+                ticks: {
+                    callback: function (value) {
+                        return "$ " + value.toLocaleString("en-US");
+                    },
+                },
+            },
+        },
+
+        plugins: {
+            legend: {
+                display: false,
+            },
+
+            tooltip: {
+                callbacks: {
+                    label: function (context) {
+                        return "$ " + context.parsed.y.toLocaleString(
+                            "en-US",
+                            {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2,
+                            }
+                        );
+                    },
+                },
+            },
+        },
+    },
+});
+
+// ============================================================
+// Lucro por mês
+// ============================================================
+const profitMonth = dashboardData.profitMonth;
+
+new Chart(document.getElementById("profitMonth"), {
+    type: "line",
+    data: {
+        labels: profitMonth.map(item => item.month),
+        datasets: [
+            {
+                label: "Lucro",
+                data: profitMonth.map(item => item.profit),
+                tension: 0.3,
+                fill: true,
+            },
+        ],
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: "Mês",
+                },
+            },
+
+            y: {
+                title: {
+                    display: true,
+                    text: "Lucro",
+                },
+
+                ticks: {
+                    callback: function (value) {
+                        return "$ " + value.toLocaleString("en-US");
+                    },
+                },
+            },
+        },
+
+        plugins: {
+            legend: {
+                display: false,
+            },
+
+            tooltip: {
+                callbacks: {
+                    label: function (context) {
+                        return "$ " + context.parsed.y.toLocaleString(
+                            "en-US",
+                            {
+                                minimumFractionDigits: 2,
+                                maximumFractionDigits: 2,
+                            }
+                        );
+                    },
+                },
+            },
+        },
+    },
+});
+
+// ============================================================
+// Ticket médio
+// ============================================================
+const ticketMonth = dashboardData.ticketMonth;
+
+new Chart(document.getElementById("ticketMonth"), {
+    type: "line",
+
+    data: {
+        labels: ticketMonth.map(item => item.month),
+
+        datasets: [{
+            label: "Ticket médio",
+            data: ticketMonth.map(item => item.average_ticket),
+            tension: 0.3,
+            fill: true,
+        }],
+    },
+
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: "Mês",
+                },
+            },
+
+            y: {
+                title: {
+                    display: true,
+                    text: "Ticket médio",
+                },
+
+                ticks: {
+                    callback: function (value) {
+                        return "$ " + value.toLocaleString("en-US");
+                    },
+                },
+            },
+        },
+
+        plugins: {
+            legend: {
+                display: false,
+            },
+
+            tooltip: {
+                callbacks: {
+                    label: function (context) {
+                        return "$ " + context.parsed.y.toLocaleString("en-US", {
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 2,
+                        });
+                    },
+                },
+            },
+        },
+    },
+});
